@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary!</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #121212;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+        }
+
+        /* මැද තියෙන හදවත */
+        .heart {
+            background-color: #ff3860;
+            display: inline-block;
+            height: 100px;
+            margin: 0 10px;
+            position: relative;
+            top: 0;
+            transform: rotate(-45deg);
+            width: 100px;
+            animation: beat 0.8s infinite alternate;
+            box-shadow: 0 0 40px #ff3860;
+        }
+
+        .heart:before, .heart:after {
+            content: "";
+            background-color: #ff3860;
+            border-radius: 50%;
+            height: 100px;
+            position: absolute;
+            width: 100px;
+        }
+
+        .heart:before { top: -50px; left: 0; }
+        .heart:after { left: 50px; top: 0; }
+
+        @keyframes beat {
+            to { transform: scale(1.2) rotate(-45deg); }
+        }
+
+        /* අකුරු හැඩගැන්වීම */
+        h1 {
+            font-size: 2.5rem;
+            margin-top: 50px;
+            text-shadow: 0 0 10px #ff3860;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #ffb3c1;
+        }
+
+        /* වටේට වැටෙන තරු */
+        .stars {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: white;
+            border-radius: 50%;
+            animation: fall 3s linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100vh); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="heart"></div>
+        <h1>Happy Anniversary! ❤️</h1>
+        <p>Babe + Bea = Forever</p>
+        <p style="font-size: 0.9rem; opacity: 0.7;">I love you more than words can say.</p>
+    </div>
+
+    <script>
+        // තරු වැටෙන ඇනිමේෂන් එකක් එකතු කිරීම
+        function createStar() {
+            const star = document.createElement('div');
+            star.classList.add('stars');
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(star);
+            setTimeout(() => { star.remove(); }, 5000);
+        }
+        setInterval(createStar, 200);
+    </script>
+
+</body>
+</html>
